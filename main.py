@@ -9,7 +9,7 @@ all_cards = [card.card(suit, rank) for suit in card.Suit for rank in card.Rank]
 
 
 def init():
-    def calculate_product(cards):
+    def calculate_product(cards: list[card]):
         prime_values = [card.rank.prime_value for card in cards[:5]]
         return prod(prime_values)
     def get_type():
@@ -76,7 +76,7 @@ def init():
         suits = {}
         card_combo = sorted(card_combo,key = lambda c:c.rank.value,reverse=True)
         for c in card_combo:
-            product *= c.rank.prime_value * c.suit.value
+            product *= c.prime_value
             ranks[c.rank] = ranks.get(c.rank, 0) + 1
             suits[c.suit] = suits.get(c.suit, 0) + 1
         look_up_table[product] = get_type()
